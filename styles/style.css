@@ -1,0 +1,53 @@
+/* 
+    Document   : style
+    Created on : Nov 13, 2013, 8:09:01 PM
+    Author     : J. Stephen Arenas
+    Description:
+        Purpose of the stylesheet follows.
+*/
+#navcontainer ul
+{
+list-style-type:none;
+margin:0;
+padding:0;
+overflow:hidden;
+}
+
+li
+{
+display: inline;
+}
+
+a:link,a:visited
+{
+display:inline-block;
+width:49%;
+font-weight:bold;
+color:#FFFFFF;
+background-color:#00007A;
+text-align:center;
+padding:0;
+text-decoration:none;
+text-transform:uppercase;
+}
+a:hover,a:active
+{
+background-color:#00002E;
+}
+
+body {background-color:#b0c4de;} 
+
+img.displayed {
+    display: block;
+    margin-left: auto;
+    margin-right: auto }
+
+#form { 
+    width: 150px;
+    min-height: 100%;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+
+
