@@ -1,10 +1,4 @@
-/* 
-    Document   : style
-    Created on : Nov 13, 2013, 8:09:01 PM
-    Author     : J. Stephen Arenas
-    Description:
-        Purpose of the stylesheet follows.
-*/
+
 #navcontainer ul
 {
 list-style-type:none;
@@ -24,7 +18,7 @@ display:inline-block;
 width:49%;
 font-weight:bold;
 color:#FFFFFF;
-background-color:#00007A;
+background-color:#2C2C2C;
 text-align:center;
 padding:0;
 text-decoration:none;
@@ -32,10 +26,10 @@ text-transform:uppercase;
 }
 a:hover,a:active
 {
-background-color:#00002E;
+background-color:#6B6B6B;
 }
 
-body {background-color:#b0c4de;} 
+body {background-color:#D3D3D3;} 
 
 img.displayed {
     display: block;

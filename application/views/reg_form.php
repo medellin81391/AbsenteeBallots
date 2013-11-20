@@ -1,7 +1,6 @@
 <div id="form">
     <?php
     
-    echo $message;
     
     echo validation_errors();
     

@@ -16,15 +16,15 @@ class Reg_model extends CI_Model {
             'localDist' => $this->input->post('localDist'),      
             'stateDist' => $this->input->post('stateDist'),      
     );
-   $query = $this->db->insert('voterinfo', $data);
-   
-   if ($query){
+        $query = $this->db->insert('voterinfo', $data);
+        if ($query){
        return true;
-   }
-   else{
-       return false;
-   }           
        
+        }
+        else{
+            return false;
+            
+        }
    }
    
    public function search_voters(){
@@ -38,6 +38,23 @@ class Reg_model extends CI_Model {
        }
        
    }
+   public function test($search_term='default'){
        
-            
+
+       
+       $this->db->select('*');
+       $this->db->from('voterinfo');
+       $this->db->like('firstName', $search_term);
+       $this->db->or_like('lastName', $search_term);
+       $this->db->or_like('street', $search_term);
+       $this->db->or_like('dob', $search_term);
+       $query = $this->db->get();
+       
+
+       return $query->result_array();
+       
+              
+       
+
+}
 }
