@@ -73,10 +73,7 @@ class Reg extends CI_Controller {
             
             
             redirect(current_url());
-            
-            $this->load->view("reg_header");
-            $this->load->view("reg_nav");
-            $this->load->view("reg_form", $data);
+           
             
         }
         }
