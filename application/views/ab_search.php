@@ -1,5 +1,5 @@
 <?php
-echo form_open("reg/searchTest");
+echo form_open("ab/search");
    //first name 
     echo form_label("First Name: ", "firstName");
     
@@ -41,5 +41,20 @@ echo form_open("reg/searchTest");
     echo form_submit("searchSubmit", "Search");
     
     echo form_close();
+    
+    
+    
+    
+    $this->table->set_heading(array('', 'Voter Number', 'First Name', 'Last Name',
+                                    'mid Initial', 'Home Number', 'Street',
+                                    'Apt', 'Zip', 'DOB',
+                                    'Local District', 'State District'));
+    
+    foreach ($query as $row){
+        
+        $this->table->add_row($row);       
+    }
+    
+    echo $this->table->generate();
     
     ?>

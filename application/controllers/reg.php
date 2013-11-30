@@ -4,36 +4,26 @@ class Reg extends CI_Controller {
     
 
     public function index(){
-        $this->searchTest();
+        $this->search();
     }
     
-    public function searchTest(){
+    public function search(){
         $this->load->model('reg_model');
-       
-    $search_term = array(
+        
+        $search_term = array(
         'firstName' => $this->input->post('firstName'),
         'lastName' => $this->input->post('lastName'),
         'street' => $this->input->post('street'),
-        'dob' => $this->input->post('dob'));
+        'dob' => $this->input->post('dob')
+            );
                 
 
-        $data['query'] = $this->reg_model->test($search_term);
+        $data['query'] = $this->reg_model->search_voters($search_term);
 
         
         $this->load->view("reg_header");
         $this->load->view("reg_nav");
-        $this->load->view("reg_search_form", $data);
         $this->load->view("reg_search", $data); 
-    }
-    public function search(){
-        $this->load->model('reg_model');
-        $data["query"] = $this->reg_model->search_voters();   
-        
-        $this->load->view("reg_header");
-        $this->load->view("reg_nav");
-        $this->load->view("reg_search_form");
-        $this->load->view("reg_search", $data); 
-
     }
     
     
@@ -41,7 +31,7 @@ class Reg extends CI_Controller {
         
         $this->load->view("reg_header");
         $this->load->view("reg_nav");
-        $this->load->view("reg_form", $data); 
+        $this->load->view("reg_form"); 
     }
     
     public function send(){
@@ -61,7 +51,7 @@ class Reg extends CI_Controller {
         if ($this->form_validation->run() == FALSE){
             $this->load->view("reg_header");
             $this->load->view("reg_nav");
-            $this->load->view("reg_form", $data);
+            $this->load->view("reg_form");
             
         }
         else{

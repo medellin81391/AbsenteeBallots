@@ -1,10 +1,12 @@
 
 #navcontainer ul
 {
+    
 list-style-type:none;
-margin:0;
+margin:0, auto;
 padding:0;
 overflow:hidden;
+text-align: center;
 }
 
 li
@@ -15,7 +17,7 @@ display: inline;
 a:link,a:visited
 {
 display:inline-block;
-width:49%;
+width:24%;
 font-weight:bold;
 color:#FFFFFF;
 background-color:#2C2C2C;
@@ -42,6 +44,4 @@ img.displayed {
     margin: 0 auto;
     padding: 20px;
 }
-
-
 
