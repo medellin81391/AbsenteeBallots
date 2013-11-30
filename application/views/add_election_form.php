@@ -2,7 +2,7 @@
 
 echo form_open("ab/addElection");
 //electionType
-	echo form_label("Election Type: ", "electionType");
+	echo form_label("Election Type: ", "elecType");
 	$options = array(
                   'election'  => 'Election',
                   'general'    => 'General',
@@ -10,16 +10,29 @@ echo form_open("ab/addElection");
 				  'primary'   => 'Primary',
 				  'referendum'   => 'Referendum',
                 );
-
+        
 	echo form_dropdown('electiontype', $options, 'election');
 	
+        //election party
 	echo form_label("Party, If Applicable: ", "party");
 	$options = array(
-                  'r'  => 'Republican',
-                  'd'    => 'Democrat'
+            'n' => 'none',
+            'r'  => 'Republican',
+            'd'    => 'Democrat'
                 );
 
-	echo form_dropdown('party', $options);
+	echo form_dropdown('party', $options, 'n');
+        
+        //date
+        echo form_label("Date: ", "elecDate");
+        
+        $data = array(
+        "name" => "elecDate",
+        "id" => "elecDate",
+        "value" => set_value("elecDate")
+    );    
+    echo form_input($data);
+        
         echo form_submit("newElectionSubmit", "submit");
-        echo from_close();
+        echo form_close();
         ?>

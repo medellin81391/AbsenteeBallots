@@ -12,4 +12,24 @@ class Ab_model extends CI_Model {
        return $query->result_array();
        
    }
+   
+   public function add_election(){
+        
+        $data = array(
+            'elecType' => $this->input->post('elecType'),
+            'date' => $this->input->post('date'),
+            'elecDate' => $this->input->post('elecDate')
+                );
+        
+        $query = $this->db->insert('election', $data);
+        if ($query){
+       return true;
+       
+        }
+        else{
+            return false;
+            
+        }
+   }
+   
 }
