@@ -1,8 +1,9 @@
 <body>
 
 
-<img class="displayed" src="<?php echo base_url(); ?>images/logo.png" />
+    <a href="<?php echo base_url(); ?>main/index"> <img class="displayed" src="<?php echo base_url(); ?>images/logo.png" /></a>
 </br>
+
 
 <div id="navcontainer">
  <ul>

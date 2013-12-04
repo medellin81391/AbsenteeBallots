@@ -1,13 +1,13 @@
 <body>
 
-<img class="displayed" src="<?php echo base_url(); ?>images/logo.png" />
+<a href="<?php echo base_url(); ?>main/index"> <img class="displayed" src="<?php echo base_url(); ?>images/logo.png" /></a>
 </br>
 
 <div id="navcontainer">
  <ul>
      <li><a href="<?php echo base_url(); ?>ab/search">Search</a></li>
-     <li><a href="<?php echo base_url(); ?>ab/view_ballots">View Ballots</a></li>
+     <li><a href="<?php echo base_url(); ?>ab/get_elections">View Ballots</a></li>
      <li><a href="<?php echo base_url(); ?>ab/reports">Reports</a></li>
-     <li><a href="<?php echo base_url(); ?>ab/add_election">Add Election</a></li>
+     <li><a href="<?php echo base_url(); ?>ab/add_edit_election">Add/Edit Election</a></li>
  </ul>
  </div>

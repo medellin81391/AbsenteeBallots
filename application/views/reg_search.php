@@ -1,3 +1,4 @@
+<div align="center">
 <?php
 echo form_open("reg/search");
    //first name 
@@ -41,20 +42,50 @@ echo form_open("reg/search");
     echo form_submit("searchSubmit", "Search");
     
     echo form_close();
-    
-    
-    
-    
-    $this->table->set_heading(array('', 'Voter Number', 'First Name', 'Last Name',
-                                    'mid Initial', 'Home Number', 'Street',
-                                    'Apt', 'Zip', 'DOB',
-                                    'Local District', 'State District'));
-    
-    foreach ($query as $row){
-        
-        $this->table->add_row($row);       
-    }
-    
-    echo $this->table->generate();
-    
     ?>
+</div>
+
+
+
+<table  align="center">
+    <tr>
+        <th>Voter #</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Middle</th>
+        <th>Home #</th>
+        <th>Street</th>
+        <th>Apt</th>
+        <th>Zip</th>
+        <th>DOB</th>
+        <th>District</th>
+        <th>Edit</th>
+        <th>Delete</th>
+        
+    </tr>
+    <?php 
+    foreach($query as $voter){
+        $voter_id = $voter['voterNum'];
+        ?>
+    <tr align="center">
+        <td><?php echo $voter['voterNum'] ?></td>
+        <td><?php echo $voter['firstName'] ?></td>
+        <td><?php echo $voter['lastName'] ?></td>
+        <td><?php echo $voter['midInitial'] ?></td>
+        <td><?php echo $voter['homeNum'] ?></td>
+        <td><?php echo $voter['street'] ?></td>
+        <td><?php echo $voter['apt'] ?></td>
+        <td><?php echo $voter['zip'] ?></td>
+        <td><?php echo $voter['dob'] ?></td>
+        <td><?php echo $voter['district'] ?></td>
+        <td><?php echo anchor("reg/edit_voter/{$voter_id}", 'Edit') ?></td>
+        <td><?php echo anchor('reg/delete_voter/'.$voter_id, 'Delete', 
+            array('onClick' => "return confirm('Are you sure you want to delete?')"));
+    ?>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+    </table>
+

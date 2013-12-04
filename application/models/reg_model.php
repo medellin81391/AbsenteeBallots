@@ -13,8 +13,7 @@ class Reg_model extends CI_Model {
             'apt' => $this->input->post('apt'),
             'zip' => $this->input->post('zip'),
             'dob' => $this->input->post('dob'),
-            'localDist' => $this->input->post('localDist'),
-            'stateDist' => $this->input->post('stateDist'),
+            'district' => $this->input->post('district')
     );
         $query = $this->db->insert('voterinfo', $data);
         if ($query){
@@ -34,8 +33,32 @@ class Reg_model extends CI_Model {
        $this->db->like('lastName', $search_term['lastName']);
        $this->db->like('street', $search_term['street']);
        $this->db->like('dob', $search_term['dob']);
+       $this->db->group_by('lastName', 'firstName');
        $query = $this->db->get();
        return $query->result_array();
        
+
+       
    }
+
+    public function get_voter($voter_id) {
+        $this->db->select('*');
+        $this->db->where('voterNum', $voter_id);
+        $query = $this->db->get('voterinfo');
+
+        return $query->row_array();
+    }
+   
+    public function update_voter($voter_id, $data)
+    {
+        $this->db->where('voterNum', $voter_id);
+        $this->db->update('voterinfo', $data);
+    }
+   
+    public function del_voter($voter_id)
+    {
+        $this->db->where('voterNum', $voter_id);
+        $this->db->delete('voterinfo');
+    }
+   
 }

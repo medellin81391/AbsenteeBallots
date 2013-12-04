@@ -41,20 +41,48 @@ echo form_open("ab/search");
     echo form_submit("searchSubmit", "Search");
     
     echo form_close();
-    
-    
-    
-    
-    $this->table->set_heading(array('', 'Voter Number', 'First Name', 'Last Name',
-                                    'mid Initial', 'Home Number', 'Street',
-                                    'Apt', 'Zip', 'DOB',
-                                    'Local District', 'State District'));
-    
-    foreach ($query as $row){
-        
-        $this->table->add_row($row);       
-    }
-    
-    echo $this->table->generate();
-    
     ?>
+
+<table  align="center">
+    <tr>
+        <th>Voter #</th>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Middle</th>
+        <th>Home #</th>
+        <th>Street</th>
+        <th>Apt</th>
+        <th>Zip</th>
+        <th>DOB</th>
+        <th>District</th>
+        <th>Issue Ballot</th>
+        
+    </tr>
+    <?php 
+    foreach($query as $voter){
+        $voter_id = $voter['voterNum'];
+        ?>
+    <tr align="center">
+        <td><?php echo $voter['voterNum'] ?></td>
+        <td><?php echo $voter['firstName'] ?></td>
+        <td><?php echo $voter['lastName'] ?></td>
+        <td><?php echo $voter['midInitial'] ?></td>
+        <td><?php echo $voter['homeNum'] ?></td>
+        <td><?php echo $voter['street'] ?></td>
+        <td><?php echo $voter['apt'] ?></td>
+        <td><?php echo $voter['zip'] ?></td>
+        <td><?php echo $voter['dob'] ?></td>
+        <td><?php echo $voter['district'] ?></td>
+        <td><?php echo anchor("ab/issue_ballot/{$voter_id}", 'Issue') ?></td>
+        </td>
+    </tr>
+    <?php
+    }
+    ?>
+    </table>
+
+
+
+    
+    
+    

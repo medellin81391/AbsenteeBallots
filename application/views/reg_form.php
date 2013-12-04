@@ -86,25 +86,16 @@
     );    
     echo form_input($data);
     
-    //local district
-    echo form_label("Local District: ", "localDist");
+    //district
+    echo form_label("District: ", "district");
     
     $data = array(
-        "name" => "localDist",
-        "id" => "localDist",
-        "value" => set_value("localDist")
+        "name" => "district",
+        "id" => "district",
+        "value" => set_value("district")
     );    
     echo form_input($data);
     
-    //state district
-    echo form_label("State District: ", "stateDist");
-    
-    $data = array(
-        "name" => "stateDist",
-        "id" => "stateDist",
-        "value" => set_value("stateDist")
-    );    
-    echo form_input($data);
     
     echo form_submit("registrationSubmit", "submit");
     

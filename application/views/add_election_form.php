@@ -1,17 +1,27 @@
+<div id="navcontainer">
+<ul>
+     <li><a href="<?php echo base_url(); ?>ab/view_election">Edit Elections</a></li>
+ </ul>
+</div>
+
+<h1 align="center"> Add Election</h1>
+<div align="center">
 <?php
 
-echo form_open("ab/addElection");
+echo validation_errors();
+
+echo form_open("ab/send_election");
 //electionType
 	echo form_label("Election Type: ", "elecType");
 	$options = array(
                   'election'  => 'Election',
                   'general'    => 'General',
                   'presidential'   => 'Presidential',
-				  'primary'   => 'Primary',
-				  'referendum'   => 'Referendum',
+		  'primary'   => 'Primary',
+		  'referendum'   => 'Referendum',
                 );
         
-	echo form_dropdown('electiontype', $options, 'election');
+	echo form_dropdown('elecType', $options, 'election');
 	
         //election party
 	echo form_label("Party, If Applicable: ", "party");
@@ -35,4 +45,8 @@ echo form_open("ab/addElection");
         
         echo form_submit("newElectionSubmit", "submit");
         echo form_close();
+        
+
         ?>
+
+</div>

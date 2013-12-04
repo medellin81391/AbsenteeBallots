@@ -17,7 +17,7 @@ class Ab_model extends CI_Model {
         
         $data = array(
             'elecType' => $this->input->post('elecType'),
-            'date' => $this->input->post('date'),
+            'party' => $this->input->post('party'),
             'elecDate' => $this->input->post('elecDate')
                 );
         
@@ -31,5 +31,47 @@ class Ab_model extends CI_Model {
             
         }
    }
+   
+   public function get_voter($voter_id) {
+        $this->db->select('*');
+        $this->db->where('voterNum', $voter_id);
+        $query = $this->db->get('voterinfo');
+
+        return $query->row_array();
+    }
+   
+    public function issue_ballots($voter_id){
+        
+        $this->db->where('voterNum', $voter_id);
+        $query = $this->db->insert('issuedballots', $data);
+        if ($query){
+       return true;
+       
+        }
+        else{
+            return false;
+            
+        }
+   }
+
+   public function get_election($election_id) {
+        $this->db->select('*');
+        $this->db->where('electionID', $election_id);
+        $query = $this->db->get('election');
+
+        return $query->row_array();
+    }
+   
+    public function update_election($election_id, $data)
+    {
+        $this->db->where('electionID', $election_id);
+        $this->db->update('election', $data);
+    }
+   
+    public function del_election($election_id)
+    {
+        $this->db->where('electionID', $election_id);
+        $this->db->delete('election');
+    }  
    
 }
