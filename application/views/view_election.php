@@ -4,11 +4,6 @@
  </ul>
 </div>
 
-<form name="frmproduct" method="post">
-	<input type="hidden" name="rid" />
-	<input type="hidden" name="command" />
-
-
 <table  align="center">
     <tr>
         <th>Election ID</th>
@@ -27,7 +22,7 @@
         <td><?php echo $election['elecType'] ?></td>
         <td><?php echo $election['party'] ?></td>
         <td><?php echo $election['elecDate'] ?></td>
-        <td><?php echo anchor("ab/edit_election_form/{$election_id}", 'Edit') ?></td>
+        <td><?php echo anchor("ab/edit_election/{$election_id}", 'Edit') ?></td>
         <td><?php echo anchor('ab/delete_election/'.$election_id, 'Delete', 
             array('onClick' => "return confirm('Are you sure you want to delete?')"));
         ?>
@@ -36,5 +31,4 @@
     <?php
     }
     ?>
-    </table>
-</form>
+</table>

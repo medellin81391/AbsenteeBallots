@@ -8,6 +8,7 @@ class Ab_model extends CI_Model {
        $this->db->like('lastName', $search_term['lastName']);
        $this->db->like('street', $search_term['street']);
        $this->db->like('dob', $search_term['dob']);
+       $this->db->order_by('lastName', 'firstName');
        $query = $this->db->get();
        return $query->result_array();
        
@@ -40,19 +41,15 @@ class Ab_model extends CI_Model {
         return $query->row_array();
     }
    
-    public function issue_ballots($voter_id){
-        
-        $this->db->where('voterNum', $voter_id);
-        $query = $this->db->insert('issuedballots', $data);
-        if ($query){
-       return true;
-       
-        }
-        else{
-            return false;
-            
-        }
-   }
+    public function issue_ballots($voter_id, $data){
+        $this->db->insert('issuedballots', $data);
+    }
+    public function get_all_elections() {
+	$this->db->select('*');
+	$query = $this->db->get('election');
+ 
+	return $query->result_array();
+	}
 
    public function get_election($election_id) {
         $this->db->select('*');
@@ -73,5 +70,48 @@ class Ab_model extends CI_Model {
         $this->db->where('electionID', $election_id);
         $this->db->delete('election');
     }  
+    
+    public function get_all_ballots() {
+	$this->db->select('*');
+        $this->db->order_by('electionID', 'lastName');
+	$query = $this->db->get('issuedballots');
+        
+ 
+	return $query->result_array();
+	}
+	
+    public function get_ballot($ballot_id)
+	{
+        $this->db->select('*');
+        $this->db->where('ballotNum', $ballot_id);
+        $query = $this->db->get('issuedballots');
+
+        return $query->row_array();
+	}
+	
+    public function update_ballot($ballot_id, $data)
+    {
+        $this->db->where('ballotNum', $ballot_id);
+        $this->db->update('issuedballots', $data);
+    }
    
+    public function del_ballot($ballot_id)
+    {
+        $this->db->where('ballotNum', $ballot_id);
+        $this->db->delete('issuedballots');
+    } 
+    
+    
+    function get_elec_dropdown()
+    {
+        $query = $this->db->get('election');
+            if ($query->num_rows >= 1)
+            {
+                foreach($query->result_array() as $row)
+                {
+                    $data[$row['electionID']]= $row['electionID'];
+                }
+                return $data;
+            }
+    }
 }

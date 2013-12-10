@@ -97,7 +97,7 @@ class Reg extends CI_Controller {
 
             if ($this->form_validation->run() === true)
             {
-                $this->reg_model->update_voter($voter_id, $data);
+                $this->reg_model->update_voter($data);
 
                 $this->session->set_flashdata('message', "<p>voter updated successfully.</p>");
                

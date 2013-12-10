@@ -33,7 +33,7 @@ class Reg_model extends CI_Model {
        $this->db->like('lastName', $search_term['lastName']);
        $this->db->like('street', $search_term['street']);
        $this->db->like('dob', $search_term['dob']);
-       $this->db->group_by('lastName', 'firstName');
+       $this->db->order_by('lastName', 'firstName');
        $query = $this->db->get();
        return $query->result_array();
        
